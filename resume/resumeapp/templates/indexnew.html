@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dinamik CV</title>
+</head>
+<body>
+    <h1>Kişisel Bilgiler</h1>
+    <p>Ad: {{ kisisel_bilgiler.ad }}</p>
+    <p>Soyad: {{ kisisel_bilgiler.soyad }}</p>
+    <p>Doğum Tarihi: {{ kisisel_bilgiler.dogum_tarihi }}</p>
+    <p>Email: {{ kisisel_bilgiler.email }}</p>
+    <p>Telefon: {{ kisisel_bilgiler.telefon }}</p>
+    <p>Adres: {{ kisisel_bilgiler.adres }}</p>
+
+    <h2>Eğitim</h2>
+    <ul>
+        {% for egitim in egitimler %}
+            <li>
+                <h3>{{ egitim.baslik }}</h3>
+                <p>{{ egitim.aciklama }}</p>
+                <p>{{ egitim.tarih }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Deneyim</h2>
+    <ul>
+        {% for deneyim in deneyimler %}
+            <li>
+                <h3>{{ deneyim.baslik }}</h3>
+                <p>{{ deneyim.aciklama }}</p>
+                <p>{{ deneyim.tarih }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
