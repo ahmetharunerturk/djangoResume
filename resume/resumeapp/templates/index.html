@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -41,17 +43,17 @@
     </header>
     <div class="page-content">
       <div>
-<div class="profile-page">
-  <div class="wrapper">
-    <div class="page-header page-header-small" filter-color="green">
-      <div class="page-header-image" data-parallax="true" style="background-image: url('static/images/cc-bg-1.jpg')"></div>
-      <div class="container">
-        <div class="content-center">
-          <div class="cc-profile-image"><a href="#"><img src="static/images/anthony.jpg" alt="Image"/></a></div>
-          <div class="h2 title">{{ kisisel_bilgiler.ad }} {{ kisisel_bilgiler.soyad }}</div>
-          <p class="category text-white">{{ kisisel_bilgiler.meslek }}</p><a class="btn btn-primary smooth-scroll mr-2" href="#contact" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Hire Me</a><a class="btn btn-primary" href="#" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
-        </div>
-      </div>
+        <div class="profile-page">
+          <div class="wrapper">
+            <div class="page-header page-header-small" filter-color="green">
+              <div class="page-header-image" data-parallax="true" style="background-image: url('{{ kisisel_bilgiler.background_photo.url }}'); background-size: cover;"></div>
+              <div class="container">
+                <div class="content-center">
+                  <div class="cc-profile-image"><a href="#"><img src=" {{ kisisel_bilgiler.profile_photo.url }} " alt="Image"/></a></div>
+                  <div class="h2 title">{{ kisisel_bilgiler.ad }} {{ kisisel_bilgiler.soyad }}</div>
+                  <p class="category text-white">{{ kisisel_bilgiler.meslek }}</p><a class="btn btn-primary smooth-scroll mr-2" href="#contact" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Hire Me</a><a class="btn btn-primary" href="#" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
+                </div>
+              </div>
       <div class="section">
         <div class="container">
           <div class="button-container">
@@ -81,6 +83,7 @@
         <div class="col-lg-6 col-md-12">
           <div class="card-body">
             <div class="h4 mt-0 title">Personal Information</div>
+            
             <div class="row">
               <div class="col-sm-4"><strong class="text-uppercase">Birth day:</strong></div>
               <div class="col-sm-8">{{ kisisel_bilgiler.dogum_tarihi }}</div>
@@ -99,8 +102,12 @@
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Language:</strong></div>
+              <div class="col-sm-8">
+                {% for dil in kisisel_bilgiler.bilinen_diller.all %}
+                  {{ dil.ad }}
+                {% endfor %}
+              </div>
               
-              <div class="col-sm-8">{{ kisisel_bilgiler.bilinen_diller.ad }}</div>
             </div>
           </div>
         </div>
@@ -253,7 +260,7 @@
             <div class="card-body cc-experience-header">
               <p>{{ deneyim.baslangic_tarihi }} - {{ deneyim.bitis_tarihi }} </p>
               
-              <div class="h5">Firma</div>
+              <div class="h5">{{ deneyim.firma }}</div>
             </div>
           </div>
           <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
@@ -280,7 +287,7 @@
           <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
             <div class="card-body cc-education-header">
               <p>{{ egitim.baslangic_tarihi }} - {{ egitim.bitis_tarihi }} </p>
-              <div class="h5">Degree</div>
+              <div class="h5">{{ egitim.degree }}</div>
             </div>
           </div>
           <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
