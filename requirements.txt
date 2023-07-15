@@ -1,2 +1,2 @@
 Django==3.2.5
-django-ckeditor = 6.6.1
+django-ckeditor == 6.6.1
