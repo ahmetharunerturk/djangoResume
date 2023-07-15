@@ -3,10 +3,10 @@ from ckeditor.fields import RichTextField
 
 
 class Egitim(models.Model):
-    okul = models.CharField(max_length=100)
-    aciklama = RichTextField()
-    degree = RichTextField(null=True)
-    baslangic_tarihi = models.DateField()
+    okul = models.CharField(max_length=100 ,blank=True)
+    aciklama = RichTextField(null=True,blank=True)
+    degree = RichTextField(null=True,blank=True)
+    baslangic_tarihi = models.DateField(blank=True)
     bitis_tarihi = models.DateField(blank=True, null=True)  # Bitiş tarihi opsiyonel
 
     def __str__(self):
@@ -14,24 +14,24 @@ class Egitim(models.Model):
 
 class Deneyim(models.Model):
     gorev = models.CharField(max_length=100)
-    aciklama = RichTextField()
-    firma = RichTextField(null=True)
-    baslangic_tarihi = models.DateField()
+    aciklama = RichTextField(blank=True)
+    firma = RichTextField(null=True,blank=True)
+    baslangic_tarihi = models.DateField(blank=True)
     bitis_tarihi = models.DateField(blank=True, null=True)  # Bitiş tarihi opsiyonel
 
     def __str__(self):
         return self.gorev
 
 class KisiselBilgiler(models.Model):
-    ad = models.CharField(max_length=50)
-    soyad = models.CharField(max_length=50)
-    meslek = models.CharField(max_length=50, null=True)
-    hakkimda = RichTextField(null=True)
-    dogum_tarihi = models.DateField()
+    ad = models.CharField(max_length=50,blank=True)
+    soyad = models.CharField(max_length=50,blank=True)
+    meslek = models.CharField(max_length=50, null=True,blank=True)
+    hakkimda = RichTextField(null=True,blank=True)
+    dogum_tarihi = models.DateField(blank=True)
     email = models.EmailField()
     cv = models.FileField(upload_to="uploads/%Y/%m/%d/", blank=True, null=True)
-    telefon = models.CharField(max_length=20)
-    adres = models.TextField()
+    telefon = models.CharField(max_length=20,blank=True)
+    adres = models.TextField(blank=True)
     profile_photo  = models.ImageField(upload_to="media/%Y/%m/%d/", blank=True, null=True)
     background_photo = models.ImageField(upload_to="media/%Y/%m/%d/", blank=True, null=True)
     github = models.URLField(blank=True, null=True)
