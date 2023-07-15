@@ -34,6 +34,7 @@
                 <li class="nav-item"><a class="nav-link smooth-scroll" href="#about">About</a></li>
                 <li class="nav-item"><a class="nav-link smooth-scroll" href="#experience">Experience</a></li>
                 <li class="nav-item"><a class="nav-link smooth-scroll" href="#education">Education</a></li>
+                <li class="nav-item"><a class="nav-link smooth-scroll" href="#languages">Languages</a></li>
                 <li class="nav-item"><a class="nav-link smooth-scroll" href="#contact">Contact</a></li>
               </ul>
             </div>
@@ -51,7 +52,7 @@
                 <div class="content-center">
                   <div class="cc-profile-image"><a href="#"><img src=" {{ kisisel_bilgiler.profile_photo.url }} " alt="Image"/></a></div>
                   <div class="h2 title">{{ kisisel_bilgiler.ad }} {{ kisisel_bilgiler.soyad }}</div>
-                  <p class="category text-white">{{ kisisel_bilgiler.meslek }}</p><a class="btn btn-primary smooth-scroll mr-2" href="#contact" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Hire Me</a><a class="btn btn-primary" href="#" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
+                  <p class="category text-white">{{ kisisel_bilgiler.meslek }}</p><a class="btn btn-primary smooth-scroll mr-2" href="#contact" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Hire Me</a><a class="btn btn-primary" href="{{ kisisel_bilgiler.cv.url }}" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
                 </div>
               </div>
       <div class="section">
@@ -76,7 +77,7 @@
         <div class="col-lg-6 col-md-12">
           <div class="card-body">
             <div class="h4 mt-0 title">About</div>
-            <p>{{ kisisel_bilgiler.hakkimda }}</p>
+            <p>{{ kisisel_bilgiler.hakkimda | safe}}</p>
             
           </div>
         </div>
@@ -103,7 +104,7 @@
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Language:</strong></div>
               <div class="col-sm-8">
-                {% for dil in kisisel_bilgiler.bilinen_diller.all %}
+                {% for dil in diller %}
                   {{ dil.ad }}
                 {% endfor %}
               </div>
@@ -260,14 +261,14 @@
             <div class="card-body cc-experience-header">
               <p>{{ deneyim.baslangic_tarihi }} - {{ deneyim.bitis_tarihi }} </p>
               
-              <div class="h5">{{ deneyim.firma }}</div>
+              <div class="h5">{{ deneyim.firma | safe}}</div>
             </div>
           </div>
           <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
             <div class="card-body">
-              <div class="h5">{{ deneyim.baslik }}</div>
+              <div class="h5">{{ deneyim.gorev }}</div>
               
-              <p>{{ deneyim.aciklama }}</p>
+              <p>{{ deneyim.aciklama | safe}}</p>
             </div>
           </div>
         </div>
@@ -287,14 +288,42 @@
           <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
             <div class="card-body cc-education-header">
               <p>{{ egitim.baslangic_tarihi }} - {{ egitim.bitis_tarihi }} </p>
-              <div class="h5">{{ egitim.degree }}</div>
+              <div class="h5">{{ egitim.okul }}</div>
             </div>
           </div>
           <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
             <div class="card-body">
-              <div class="h5"></div>
-              <p class="category">{{ egitim.baslik }}</p>
-              <p>{{ egitim.aciklama }}</p>
+              <div class="h5">{{ egitim.degree | safe}}</div>
+              <p class="category"></p>
+              <p>{{ egitim.aciklama | safe }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+
+  </div>
+</div>
+
+<div class="section">
+  <div class="container cc-education" id="languages">
+    <div class="h4 text-center mb-4 title">Languages</div>
+
+    {% for dil in diller %}
+
+      <div class="card">
+        <div class="row">
+          <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+            <div class="card-body cc-education-header">
+              <div class="h5">{{ dil.seviye }}</div>
+            </div>
+          </div>
+          <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+            <div class="card-body">
+              <div class="h5">{{ dil.ad }}</div>
+              <p class="category"></p>
+              <p>{{ dil.sertifika }}</p>
             </div>
           </div>
         </div>
@@ -356,7 +385,7 @@
 </div> {% endcomment %}
 
 <div class="section" id="contact">
-  <div class="cc-contact-information" style="background-image: url('images/staticmap.png')">
+  <div class="cc-contact-information" style="background-image: url('{{ kisisel_bilgiler.background_photo.url }}')">
     <div class="container">
       <div class="cc-contact">
         <div class="row">
@@ -406,12 +435,16 @@
                 </div>
                 <div class="col-md-6">
                   <div class="card-body">
-                    <p class="mb-0"><strong>Address </strong></p>
-                    <p class="pb-2">{{ kisisel_bilgiler.adres }}</p>
-                    <p class="mb-0"><strong>Phone</strong></p>
-                    <p class="pb-2">{{ kisisel_bilgiler.telefon }}</p>
+                    <p class="mb-0"><strong>{{ kisisel_bilgiler.ad }} {{ kisisel_bilgiler.soyad }} </strong></p>
+                    <br>
+                    
                     <p class="mb-0"><strong>Email</strong></p>
                     <p>{{ kisisel_bilgiler.email }}</p>
+                    <p class="mb-0"><strong>Phone</strong></p>
+                    <p class="pb-2">{{ kisisel_bilgiler.telefon }}</p>
+                    
+                    <p class="mb-0"><strong>Address </strong></p>
+                    <p class="pb-2">{{ kisisel_bilgiler.adres }}</p>
                   </div>
                 </div>
               </div>
