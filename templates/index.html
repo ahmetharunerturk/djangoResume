@@ -26,7 +26,7 @@
       <div class="profile-page sidebar-collapse">
         <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-primary" color-on-scroll="400">
           <div class="container">
-            <div class="navbar-translate"><a class="navbar-brand" href="#" rel="tooltip">{{ kisisel_bilgiler.ad }} {{ kisisel_bilgiler.soyad }}</a>
+            <div class="navbar-translate"><a class="navbar-brand" href="https://ahmetharunerturk.com/" rel="tooltip">{{ kisisel_bilgiler.ad }} {{ kisisel_bilgiler.soyad }}</a>
               <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-bar bar1"></span><span class="navbar-toggler-bar bar2"></span><span class="navbar-toggler-bar bar3"></span></button>
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navigation">
@@ -52,7 +52,7 @@
                 <div class="content-center">
                  {% comment %} <div class="cc-profile-image"><a href="#"><img src=" {{ kisisel_bilgiler.profile_photo.url }} " alt="Image"/></a></div> {% endcomment %}
                   <div class="h2 title">{{ kisisel_bilgiler.ad }} {{ kisisel_bilgiler.soyad }}</div>
-                  <p class="category text-white">{{ kisisel_bilgiler.meslek }}</p><a class="btn btn-primary smooth-scroll mr-2" href="#contact" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Hire Me</a><a class="btn btn-primary" href="{{ kisisel_bilgiler.cv.url }}" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
+                  <p class="category text-white">{{ kisisel_bilgiler.meslek }}</p><a class="btn btn-primary smooth-scroll mr-2" href="#contact" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Contact</a><a class="btn btn-primary" href="{{ kisisel_bilgiler.cv.url }}" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
                 </div>
               </div>
       <div class="section">
@@ -61,7 +61,7 @@
             <a class="btn btn-default btn-round btn-lg btn-icon" href="{{ kisisel_bilgiler.github }}" target="_blank rel="tooltip" title="Check my Projects"><i class="fa fa-github"></i></a>
             
             <a class="btn btn-default btn-round btn-lg btn-icon" href="{{ kisisel_bilgiler.linkedin }}" target="_blank rel="tooltip" title="Follow me on Linkedin"><i class="fa fa-linkedin"></i></a>
-            <a class="btn btn-default btn-round btn-lg btn-icon" href="{{ kisisel_bilgiler.twitter }}" target="_blank rel="tooltip" title="Follow me on Twitter"><i class="fa fa-twitter"></i></a>
+            <a class="btn 
             <a class="btn btn-default btn-round btn-lg btn-icon" href="{{ kisisel_bilgiler.instagram }}" target="_blank rel="tooltip" title="Follow me on Instagram"><i class="fa fa-instagram"></i></a>
            
         </div>
@@ -93,10 +93,7 @@
               <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
               <div class="col-sm-8">{{ kisisel_bilgiler.email }}</div>
             </div>
-            <div class="row mt-3">
-              <div class="col-sm-4"><strong class="text-uppercase">Phone:</strong></div>
-              <div class="col-sm-8">{{ kisisel_bilgiler.telefon }}</div>
-            </div>
+            
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Address:</strong></div>
               <div class="col-sm-8">{{ kisisel_bilgiler.adres }}</div>
@@ -440,8 +437,7 @@
                     
                     <p class="mb-0"><strong>Email</strong></p>
                     <p>{{ kisisel_bilgiler.email }}</p>
-                    <p class="mb-0"><strong>Phone</strong></p>
-                    <p class="pb-2">{{ kisisel_bilgiler.telefon }}</p>
+                
                     
                     <p class="mb-0"><strong>Address </strong></p>
                     <p class="pb-2">{{ kisisel_bilgiler.adres }}</p>
