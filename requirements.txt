@@ -5,9 +5,15 @@ django-crispy-forms==1.14.0
 django-tinymce==3.5.0
 sqlparse==0.4.3
 django-ckeditor == 6.6.1
-
 gunicorn
 dj-database-url
 psycopg2
 pillow
 whitenoise
+psycopg==3.1.9
+psycopg2==2.9.6
+python-decouple==3.8
+python-dotenv==1.0.0
+sqlparse==0.4.4
+typing_extensions==4.7.1
+tzdata==2023.3
