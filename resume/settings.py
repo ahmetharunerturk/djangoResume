@@ -19,8 +19,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'FALSE') == 'True'
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'djangoresume-production.up.railway.app').split(',')
-
+ALLOWED_HOSTS = ['djangoresume-production.up.railway.app']
 
 # Application definition
 
